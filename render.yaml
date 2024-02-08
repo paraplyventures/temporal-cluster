@@ -19,6 +19,8 @@ envVarGroups:
       value: false
     - key: DB
       value: postgres12
+    - key: TEMPORAL_CLI_ADDRESS
+      value: temporal-server-th8r:7233
     - key: TEMPORAL_ADDRESS
       value: temporal-server-th8r:7233
     - key: TEMPORAL_GRPC_PORT
