@@ -88,7 +88,7 @@ services:
 
 - type: web
   name: temporal-ui
-  autoDeploy: false
+  autoDeploy: true
   plan: Starter
   region: oregon
   runtime: image
@@ -96,14 +96,17 @@ services:
     url: temporalio/ui:2.23.0
   envVars:
   - fromGroup: temporal-shared
-
-# - type: pserv
-#   name: temporal-admin-tools
-#   autoDeploy: false
-#   plan: Starter
-#   region: oregon
-#   runtime: image
-#   image:
-#     url: temporalio/admin-tools:1.22.4
-#   envVars:
-#   - fromGroup: temporal-shared
+  - key: PORT
+    value: 8080
+  - key: TEMPORAL_UI_PORT
+    value: 8080
+  - key: TEMPORAL_AUTH_ENABLED
+    value: "true"
+  - key: TEMPORAL_AUTH_PROVIDER_URL
+    value: https://accounts.google.com
+  - key: TEMPORAL_AUTH_PROVIDER_CLIENT_ID
+    value: 137946797831-gbk7t30l8iuu849bn9kmmuejeb59dubn.apps.googleusercontent.com
+  - key: TEMPORAL_AUTH_PROVIDER_CLIENT_SECRET
+    value: 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
+  - key: TEMPORAL_AUTH_CALLBACK_URL
+    value: https://temporal-ui-7g3h.onrender.com/auth/sso/callback
