@@ -248,9 +248,9 @@ setup_postgres_schema() {
     if [[ ${VISIBILITY_DBNAME} != "${POSTGRES_USER}" && ${SKIP_DB_CREATE} != true ]]; then
         temporal-sql-tool \
             --plugin ${DB} \
-            --ep "${POSTGRES_SEEDS}" \
-            -u "${POSTGRES_USER}" \
-            -p "${DB_PORT}" \
+            --ep "${VISIBILITY_POSTGRES_SEEDS}" \
+            -u "${VISIBILITY_POSTGRES_USER}" \
+            -p "${VISIBILITY_DB_PORT}" \
             --db "${VISIBILITY_DBNAME}" \
             --tls="${POSTGRES_TLS_ENABLED}" \
             --tls-disable-host-verification="${POSTGRES_TLS_DISABLE_HOST_VERIFICATION}" \
@@ -262,9 +262,9 @@ setup_postgres_schema() {
     fi
     temporal-sql-tool \
         --plugin ${DB} \
-        --ep "${POSTGRES_SEEDS}" \
-        -u "${POSTGRES_USER}" \
-        -p "${DB_PORT}" \
+        --ep "${VISIBILITY_POSTGRES_SEEDS}" \
+        -u "${VISIBILITY_POSTGRES_USER}" \
+        -p "${VISIBILITY_DB_PORT}" \
         --db "${VISIBILITY_DBNAME}" \
         --tls="${POSTGRES_TLS_ENABLED}" \
         --tls-disable-host-verification="${POSTGRES_TLS_DISABLE_HOST_VERIFICATION}" \
@@ -275,9 +275,9 @@ setup_postgres_schema() {
         setup-schema -v 0.0
     temporal-sql-tool \
         --plugin ${DB} \
-        --ep "${POSTGRES_SEEDS}" \
-        -u "${POSTGRES_USER}" \
-        -p "${DB_PORT}" \
+        --ep "${VISIBILITY_POSTGRES_SEEDS}" \
+        -u "${VISIBILITY_POSTGRES_USER}" \
+        -p "${VISIBILITY_DB_PORT}" \
         --db "${VISIBILITY_DBNAME}" \
         --tls="${POSTGRES_TLS_ENABLED}" \
         --tls-disable-host-verification="${POSTGRES_TLS_DISABLE_HOST_VERIFICATION}" \
