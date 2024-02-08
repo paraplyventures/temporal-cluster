@@ -294,7 +294,7 @@ setup_schema() {
           echo 'Setup MySQL schema.'
           setup_mysql_schema
           ;;
-      postgres12 | postgres12_pgx)
+      postgres | postgresql | postgres12 | postgres12_pgx)
           echo 'Setup PostgreSQL schema.'
           setup_postgres_schema
           ;;
