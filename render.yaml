@@ -28,9 +28,6 @@ envVarGroups:
 #   region: oregon
 #   env: docker
 #   dockerfilePath: ./temporal-cluster/server/auto-setup/Dockerfile
-#   dependencies:
-#   - temporal-db
-#   - temporal-db-visibility
 #   scaling:
 #     minInstances: 1
 #     maxInstances: 3
