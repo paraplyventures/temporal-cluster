@@ -5,44 +5,72 @@ databases:
   plan: Starter
   region: oregon
 - name: temporal-db-visibility
-  databaseName: temporalvisibility
+  databaseName: temporal_visibility
   user: temporalvisibility
   plan: Starter
   region: oregon
 
 
-# - type: pserv
-#   name: temporal-frontend
-#   autoDeploy: false
-#   plan: Starter
-#   region: oregon
-#   env: docker
-#   dockerfilePath: ./temporal-cluster/server/auto-setup/Dockerfile
-#   scaling:
-#     minInstances: 1
-#     maxInstances: 3
-#     targetMemoryPercent: 80
-#     targetCPUPercent: 80
-#   envVars:
-#   - key: SKIP_POSTGRES_DB_CREATION
-#     value: true
-#   - key: DBNAME
-#     fromDatabase:
-#       name: temporal-db
-#       property: database
-#   - key: DB_PORT
-#     fromDatabase:
-#       name: temporal-db
-#       property: port
-#   - key: POSTGRES_USER
-#     fromDatabase:
-#       name: temporal-db
-#       property: user
-#   - key: POSTGRES_PWD
-#     fromDatabase:
-#       name: temporal-db
-#       property: password
-#   - key: POSTGRES_SEEDS
-#     fromDatabase:
-#       name: temporal-db
-#       property: host
+- type: pserv
+  name: temporal-server
+  autoDeploy: false
+  plan: Starter
+  region: oregon
+  env: docker
+  dockerfilePath: ./temporal-cluster/server/auto-setup/Dockerfile
+  scaling:
+    minInstances: 1
+    maxInstances: 3
+    targetMemoryPercent: 80
+    targetCPUPercent: 80
+  envVars:
+  - key: DYNAMIC_CONFIG_FILE_PATH
+    value: /etc/temporal/dynamicconfig.yaml
+  - key: ENABLE_ES
+    value: false
+  - key: SKIP_POSTGRES_DB_CREATION
+    value: false
+  - key: SKIP_VISIBILITY_DB_SETUP
+    value: false
+  - key: DB
+    value: postgresql
+  - key: DBNAME
+    fromDatabase:
+      name: temporal-db
+      property: database
+  - key: DB_PORT
+    fromDatabase:
+      name: temporal-db
+      property: port
+  - key: POSTGRES_USER
+    fromDatabase:
+      name: temporal-db
+      property: user
+  - key: POSTGRES_PWD
+    fromDatabase:
+      name: temporal-db
+      property: password
+  - key: POSTGRES_SEEDS
+    fromDatabase:
+      name: temporal-db
+      property: host
+  - key: VISIBILITY_DBNAME
+    fromDatabase:
+      name: temporal-db-visibility
+      property: database
+  - key: VISIBILITY_DB_PORT
+    fromDatabase:
+      name: temporal-db-visibility
+      property: port
+  - key: VISIBILITY_POSTGRES_USER
+    fromDatabase:
+      name: temporal-db-visibility
+      property: user
+  - key: VISIBILITY_POSTGRES_PWD
+    fromDatabase:
+      name: temporal-db-visibility
+      property: password
+  - key: VISIBILITY_POSTGRES_SEEDS
+    fromDatabase:
+      name: temporal-db-visibility
+      property: host
