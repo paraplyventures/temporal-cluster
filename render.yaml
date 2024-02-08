@@ -20,65 +20,65 @@ envVarGroups:
     - key: DB
       value: postgresql
 
-services:
-- type: pserv
-  name: temporal-server
-  autoDeploy: false
-  plan: Starter
-  region: oregon
-  env: docker
-  dockerfilePath: ./temporal-cluster/server/auto-setup/Dockerfile
-  dependencies:
-  - temporal-db
-  - temporal-db-visibility
-  scaling:
-    minInstances: 1
-    maxInstances: 3
-    targetMemoryPercent: 80
-    targetCPUPercent: 80
-  envVars:
-  - fromGroup: temporal-shared
-  - key: SKIP_POSTGRES_DB_CREATION
-    value: false
-  - key: SKIP_DB_CREATE
-    value: false
-  - key: DBNAME
-    fromDatabase:
-      name: temporal-db
-      property: database
-  - key: DB_PORT
-    fromDatabase:
-      name: temporal-db
-      property: port
-  - key: POSTGRES_USER
-    fromDatabase:
-      name: temporal-db
-      property: user
-  - key: POSTGRES_PWD
-    fromDatabase:
-      name: temporal-db
-      property: password
-  - key: POSTGRES_SEEDS
-    fromDatabase:
-      name: temporal-db
-      property: host
-  - key: VISIBILITY_DBNAME
-    fromDatabase:
-      name: temporal-db-visibility
-      property: database
-  - key: VISIBILITY_DB_PORT
-    fromDatabase:
-      name: temporal-db-visibility
-      property: port
-  - key: VISIBILITY_POSTGRES_USER
-    fromDatabase:
-      name: temporal-db-visibility
-      property: user
-  - key: VISIBILITY_POSTGRES_PWD
-    fromDatabase:
-      name: temporal-db-visibility
-      property: password
-  - key: VISIBILITY_POSTGRES_SEEDS
-    fromDatabase:
-      name: temporal-db-visibility
-      property: host
+# services:
+# - type: pserv
+#   name: temporal-server
+#   autoDeploy: false
+#   plan: Starter
+#   region: oregon
+#   env: docker
+#   dockerfilePath: ./temporal-cluster/server/auto-setup/Dockerfile
+#   dependencies:
+#   - temporal-db
+#   - temporal-db-visibility
+#   scaling:
+#     minInstances: 1
+#     maxInstances: 3
+#     targetMemoryPercent: 80
+#     targetCPUPercent: 80
+#   envVars:
+#   - fromGroup: temporal-shared
+#   - key: SKIP_POSTGRES_DB_CREATION
+#     value: false
+#   - key: SKIP_DB_CREATE
+#     value: false
+#   - key: DBNAME
+#     fromDatabase:
+#       name: temporal-db
+#       property: database
+#   - key: DB_PORT
+#     fromDatabase:
+#       name: temporal-db
+#       property: port
+#   - key: POSTGRES_USER
+#     fromDatabase:
+#       name: temporal-db
+#       property: user
+#   - key: POSTGRES_PWD
+#     fromDatabase:
+#       name: temporal-db
+#       property: password
+#   - key: POSTGRES_SEEDS
+#     fromDatabase:
+#       name: temporal-db
+#       property: host
+#   - key: VISIBILITY_DBNAME
+#     fromDatabase:
+#       name: temporal-db-visibility
+#       property: database
+#   - key: VISIBILITY_DB_PORT
+#     fromDatabase:
+#       name: temporal-db-visibility
+#       property: port
+#   - key: VISIBILITY_POSTGRES_USER
+#     fromDatabase:
+#       name: temporal-db-visibility
+#       property: user
+#   - key: VISIBILITY_POSTGRES_PWD
+#     fromDatabase:
+#       name: temporal-db-visibility
+#       property: password
+#   - key: VISIBILITY_POSTGRES_SEEDS
+#     fromDatabase:
+#       name: temporal-db-visibility
+#       property: host
