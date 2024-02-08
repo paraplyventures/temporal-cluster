@@ -5,8 +5,8 @@ databases:
   plan: Starter
   region: oregon
 - name: temporal-db-visibility
-  databaseName: temporal_visibility
-  user: temporal-visibility
+  databaseName: temporalvisibility
+  user: temporalvisibility
   plan: Starter
   region: oregon
 
