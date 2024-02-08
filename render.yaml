@@ -36,7 +36,7 @@ services:
   envVars:
   - fromGroup: temporal-shared
   - key: SKIP_DB_CREATE
-    value: false
+    value: true
   - key: DBNAME
     fromDatabase:
       name: temporal-db

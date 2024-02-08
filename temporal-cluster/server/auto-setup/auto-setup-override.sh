@@ -244,8 +244,9 @@ setup_postgres_schema() {
         --tls-server-name "${POSTGRES_TLS_SERVER_NAME}" \
         update-schema -d "${SCHEMA_DIR}"
 
+    export SQL_PASSWORD=${VISIBILITY_POSTGRES_PWD}
     VISIBILITY_SCHEMA_DIR=${TEMPORAL_HOME}/schema/postgresql/${POSTGRES_VERSION_DIR}/visibility/versioned
-    if [[ ${VISIBILITY_DBNAME} != "${POSTGRES_USER}" && ${SKIP_DB_CREATE} != true ]]; then
+    if [[ ${VISIBILITY_DBNAME} != "${VISIBILITY_POSTGRES_USER}" && ${SKIP_DB_CREATE} != true ]]; then
         temporal-sql-tool \
             --plugin ${DB} \
             --ep "${VISIBILITY_POSTGRES_SEEDS}" \
