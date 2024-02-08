@@ -21,6 +21,10 @@ envVarGroups:
       value: postgres12
     - key: TEMPORAL_ADDRESS
       value: temporal-server-th8r:7233
+    - key: TEMPORAL_GRPC_PORT
+      value: 7233
+    - key: TEMPORAL_GRPC_ADDRESS
+      value: temporal-server-th8r:7233
 
 services:
 - type: pserv
@@ -79,3 +83,25 @@ services:
     fromDatabase:
       name: temporal-db-visibility
       property: host
+
+- type: web
+  name: temporal-ui
+  autoDeploy: false
+  plan: Starter
+  region: oregon
+  runtime: image
+  image:
+    url: temporalio/ui:1.22.4
+  envVars:
+  - fromGroup: temporal-shared
+
+- type: web
+  name: temporal-admin-tools
+  autoDeploy: false
+  plan: Starter
+  region: oregon
+  runtime: image
+  image:
+    url: temporalio/admin-tools:1.22.4
+  envVars:
+  - fromGroup: temporal-shared
