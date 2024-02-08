@@ -110,3 +110,5 @@ services:
     value: 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
   - key: TEMPORAL_AUTH_CALLBACK_URL
     value: https://temporal-ui-7g3h.onrender.com/auth/sso/callback
+  - key: TEMPORAL_AUTH_SCOPES
+    value: "openid,email,profile"
