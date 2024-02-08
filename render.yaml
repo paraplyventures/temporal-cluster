@@ -97,13 +97,13 @@ services:
   envVars:
   - fromGroup: temporal-shared
 
-- type: pserv
-  name: temporal-admin-tools
-  autoDeploy: false
-  plan: Starter
-  region: oregon
-  runtime: image
-  image:
-    url: temporalio/admin-tools:1.22.4
-  envVars:
-  - fromGroup: temporal-shared
+# - type: pserv
+#   name: temporal-admin-tools
+#   autoDeploy: false
+#   plan: Starter
+#   region: oregon
+#   runtime: image
+#   image:
+#     url: temporalio/admin-tools:1.22.4
+#   envVars:
+#   - fromGroup: temporal-shared
