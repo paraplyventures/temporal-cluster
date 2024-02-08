@@ -101,7 +101,7 @@ services:
   - key: TEMPORAL_UI_PORT
     value: 8080
   - key: TEMPORAL_CORS_ORIGINS
-    value: "*"
+    value: "https://temporal-ui-7g3h.onrender.com"
   - key: TEMPORAL_AUTH_ENABLED
     value: "true"
   - key: TEMPORAL_AUTH_PROVIDER_URL
