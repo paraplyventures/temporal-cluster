@@ -97,7 +97,7 @@ services:
   envVars:
   - fromGroup: temporal-shared
 
-- type: web
+- type: pserv
   name: temporal-admin-tools
   autoDeploy: false
   plan: Starter
