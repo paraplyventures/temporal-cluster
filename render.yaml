@@ -4,3 +4,45 @@ databases:
   user: temporal
   plan: Starter
   region: oregon
+- name: temporal-db-visibility
+  databaseName: temporal_visibility
+  user: temporal-visibility
+  plan: Starter
+  region: oregon
+
+
+# - type: pserv
+#   name: temporal-frontend
+#   autoDeploy: false
+#   plan: Starter
+#   region: oregon
+#   env: docker
+#   dockerfilePath: ./temporal-cluster/server/auto-setup/Dockerfile
+#   scaling:
+#     minInstances: 1
+#     maxInstances: 3
+#     targetMemoryPercent: 80
+#     targetCPUPercent: 80
+#   envVars:
+#   - key: SKIP_POSTGRES_DB_CREATION
+#     value: true
+#   - key: DBNAME
+#     fromDatabase:
+#       name: temporal-db
+#       property: database
+#   - key: DB_PORT
+#     fromDatabase:
+#       name: temporal-db
+#       property: port
+#   - key: POSTGRES_USER
+#     fromDatabase:
+#       name: temporal-db
+#       property: user
+#   - key: POSTGRES_PWD
+#     fromDatabase:
+#       name: temporal-db
+#       property: password
+#   - key: POSTGRES_SEEDS
+#     fromDatabase:
+#       name: temporal-db
+#       property: host
