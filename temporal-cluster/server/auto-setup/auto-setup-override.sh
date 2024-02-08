@@ -81,7 +81,7 @@ validate_db_env() {
               die "MYSQL_SEEDS env must be set if DB is ${DB}."
           fi
           ;;
-      postgres12 | postgres12_pgx)
+      postgres | postgresql | postgres12 | postgres12_pgx)
           if [[ -z ${POSTGRES_SEEDS} ]]; then
               die "POSTGRES_SEEDS env must be set if DB is ${DB}."
           fi
