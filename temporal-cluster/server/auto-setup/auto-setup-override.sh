@@ -138,7 +138,7 @@ wait_for_db() {
       mysql8)
           wait_for_mysql
           ;;
-      postgres12 | postgres12_pgx)
+      postgres | postgresql | postgres12 | postgres12_pgx)
           wait_for_postgres
           ;;
       cassandra)
