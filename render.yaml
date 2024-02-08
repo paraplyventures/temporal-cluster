@@ -91,7 +91,7 @@ services:
   region: oregon
   runtime: image
   image:
-    url: temporalio/ui:1.22.4
+    url: temporalio/ui:2.23.0
   envVars:
   - fromGroup: temporal-shared
 
