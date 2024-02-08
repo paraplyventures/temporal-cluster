@@ -10,7 +10,17 @@ databases:
   plan: Starter
   region: oregon
 
+envVarGroups:
+  - name: temporal-shared
+    envVars:
+    - key: DYNAMIC_CONFIG_FILE_PATH
+      value: /etc/temporal/dynamicconfig.yaml
+    - key: ENABLE_ES
+      value: false
+    - key: DB
+      value: postgresql
 
+services:
 - type: pserv
   name: temporal-server
   autoDeploy: false
@@ -24,16 +34,11 @@ databases:
     targetMemoryPercent: 80
     targetCPUPercent: 80
   envVars:
-  - key: DYNAMIC_CONFIG_FILE_PATH
-    value: /etc/temporal/dynamicconfig.yaml
-  - key: ENABLE_ES
-    value: false
+  - fromGroup: temporal-shared
   - key: SKIP_POSTGRES_DB_CREATION
     value: false
-  - key: SKIP_VISIBILITY_DB_SETUP
+  - key: SKIP_DB_CREATE
     value: false
-  - key: DB
-    value: postgresql
   - key: DBNAME
     fromDatabase:
       name: temporal-db
